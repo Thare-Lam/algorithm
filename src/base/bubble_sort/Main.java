@@ -1,5 +1,7 @@
 package base.bubble_sort;
 
+import utils.TestUtils;
+
 public class Main {
 
     public static void bubbleSort(int[] arr) {
@@ -22,15 +24,9 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{5, 9, 1, 10, 0, 4, 99, 32, 23, 2};
-        int n = 10;
-        while (n-- > 0) {
-            bubbleSort(arr);
-            for (int i : arr) {
-                System.out.print(i + " ");
-            }
-            System.out.println();
-        }
+        int[] arr = TestUtils.SORT_ARRAY_INT;
+        bubbleSort(arr);
+        TestUtils.printArray(arr);
     }
 
 }

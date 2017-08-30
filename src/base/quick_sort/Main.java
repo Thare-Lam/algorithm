@@ -1,5 +1,8 @@
 package base.quick_sort;
 
+import utils.TestUtils;
+
+import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
@@ -66,16 +69,14 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{5, 9, 1, 10, 0, 4, 99, 32, 23, 2};
         int n = 10;
+        int[] arr = TestUtils.SORT_ARRAY_INT;
+        int[] copy;
         while (n-- > 0) {
-            quickSort(arr);
-            for (int i : arr) {
-                System.out.print(i + " ");
-            }
-            System.out.println();
+            copy = Arrays.copyOf(arr, arr.length);
+            quickSort(copy);
+            TestUtils.printArray(copy);
         }
-
     }
 
 }
