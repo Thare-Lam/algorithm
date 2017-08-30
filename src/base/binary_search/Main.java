@@ -1,5 +1,7 @@
 package base.binary_search;
 
+import utils.TestUtils;
+
 public class Main {
 
     public static int binarySearch(int arr[], int k) {
@@ -21,10 +23,14 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14};
+        int[] arr = TestUtils.SEARCH_ARRAY_INT;
+        boolean flag = true;
         for (int i = 0; i < arr.length; ++i) {
-            System.out.println(binarySearch(arr, arr[i]) == i);
+            if (binarySearch(arr, arr[i]) != i) {
+                flag = false;
+            }
         }
+        System.out.println(flag);
     }
 
 }
