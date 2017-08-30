@@ -1,4 +1,4 @@
-package lintcode;
+package lintcode.create_maximum_number;
 
 import java.util.*;
 
