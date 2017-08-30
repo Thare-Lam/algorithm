@@ -2,7 +2,7 @@ package base.binary_search;
 
 public class Main {
 
-    public static int binarySearchStart(int arr[], int k) {
+    public static int binarySearch(int arr[], int k) {
         return binarySearch(arr, 0, arr.length, k);
     }
 
@@ -23,7 +23,7 @@ public class Main {
     public static void main(String[] args) {
         int[] arr = new int[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14};
         for (int i = 0; i < arr.length; ++i) {
-            System.out.println(binarySearchStart(arr, arr[i]) == i);
+            System.out.println(binarySearch(arr, arr[i]) == i);
         }
     }
 

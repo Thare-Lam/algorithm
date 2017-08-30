@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Main {
 
-    public static void quickSortStart(int[] arr) {
+    public static void quickSort(int[] arr) {
         quickSort(arr, 0, arr.length - 1);
     }
 
@@ -69,7 +69,7 @@ public class Main {
         int[] arr = new int[]{5, 9, 1, 10, 0, 4, 99, 32, 23, 2};
         int n = 10;
         while (n-- > 0) {
-            quickSortStart(arr);
+            quickSort(arr);
             for (int i : arr) {
                 System.out.print(i + " ");
             }
