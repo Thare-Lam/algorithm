@@ -23,15 +23,20 @@ public class Main {
                     }
                 }
             }
-
             System.out.println(bfs(map, n, m, sx, sy, ex, ey));
         }
     }
 
     private static int bfs(char[][] map, int n, int m, int sx, int sy, int ex, int ey) {
-        int[] gx = new int[]{0, 1, 0, -1};
-        int[] gy = new int[]{-1, 0, 1, 0};
-        int[][][] res = new int[n][m][1];
+        int[] gx = new int[]{0, 0, 1, -1};
+        int[] gy = new int[]{1, -1, 0, 0};
+        int[][][] res = new int[n][m][1023];
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < m; ++j) {
+                Arrays.fill(res[i][j], -1);
+            }
+        }
+        res[sx][sy][0] = 0;
         Queue<Node> queue = new LinkedList<>();
         Node start = new Node(sx, sy, 0);
         queue.add(start);
@@ -43,12 +48,12 @@ public class Main {
             for (int i = 0; i < 4; ++i) {
                 int x = cur.x + gx[i];
                 int y = cur.y + gy[i];
-                if (x < 0 || x >= n || y < 0 || y >= n || map[x][y] == '0') {
+                if (x < 0 || x >= n || y < 0 || y >= m || map[x][y] == '0') {
                     continue;
                 }
                 Node temp = new Node(x, y, cur.k);
                 if (map[x][y] >= 'a' && map[x][y] <= 'z') {
-                    temp.k |= (1 << (map[x][y] = 'a'));
+                    temp.k |= (1 << (map[x][y] - 'a'));
                 } else if (map[x][y] >= 'A' && map[x][y] <= 'Z') {
                     if ((temp.k & (1 << (map[x][y] - 'A'))) == 0) {
                         continue;
