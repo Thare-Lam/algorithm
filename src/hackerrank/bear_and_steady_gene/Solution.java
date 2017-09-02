@@ -12,135 +12,37 @@ public class Solution {
     }
 
     private static int process(int n, char[] s) {
-        Gene g = new Gene();
-        g.init(s, n);
-        Aim aim = g.getAim(n);
-        if (aim == null) {
-            return 0;
+        Map<Character, Integer> map = new HashMap<>();
+        map.put('A', 0);
+        map.put('C', 0);
+        map.put('G', 0);
+        map.put('T', 0);
+        for (char c : s) {
+            map.put(c, map.get(c) + 1);
         }
-        int i = 0, j = 0;
-        int min = n;
+        int i = 0, j = 0, min = n;
         while (i < n && j < n) {
-            while (j < n && !aim.check()) {
-                aim.add(s[j++]);
+            while (j < n && !isSteady(map, n)) {
+                map.put(s[j], map.get(s[j]) - 1);
+                ++j;
             }
-            if (aim.check()) {
+            if (isSteady(map, n)) {
                 min = Math.min(min, j - i);
             }
-            aim.sub(s[i++]);
+            map.put(s[i], map.get(s[i]) + 1);
+            ++i;
         }
         return min;
     }
 
-    private static class Aim {
-        int a;
-        int ab;
-        int c;
-        int cb;
-        int g;
-        int gb;
-        int t;
-        int tb;
-
-        public Aim() {}
-
-        public void add(char ch) {
-            switch (ch) {
-                case 'A':
-                    if (ab > 0) {
-                        --a;
-                    }
-                    break;
-                case 'C':
-                    if (cb > 0) {
-                        --c;
-                    }
-                    break;
-                case 'G':
-                    if (gb > 0) {
-                        --g;
-                    }
-                    break;
-                case 'T':
-                    if (tb > 0) {
-                        --t;
-                    }
-                    break;
+    private static boolean isSteady(Map<Character, Integer> map, int n) {
+        int avg = n / 4;
+        for (Integer v : map.values()) {
+            if (v > avg) {
+                return false;
             }
         }
-
-        public void sub(char ch) {
-            switch (ch) {
-                case 'A':
-                    if (ab > 0) {
-                        ++a;
-                    }
-                    break;
-                case 'C':
-                    if (cb > 0) {
-                        ++c;
-                    }
-                    break;
-                case 'G':
-                    if (gb > 0) {
-                        ++g;
-                    }
-                    break;
-                case 'T':
-                    if (tb > 0) {
-                        ++t;
-                    }
-                    break;
-            }
-        }
-
-        public boolean check() {
-            return (ab < 0 || (ab > 0 && a <= 0))
-                    && (cb < 0 || (cb > 0 && c <= 0))
-                    && (gb < 0 || (gb > 0 && g <= 0))
-                    && (tb < 0 || (tb > 0 && t <= 0));
-        }
-    }
-
-    private static class Gene {
-        int a;
-        int c;
-        int g;
-        int t;
-
-        public Gene() {}
-
-        public void init(char[] s, int n) {
-            for (int i = 0; i < n; ++i) {
-                switch (s[i]) {
-                    case 'A':
-                        ++a;
-                        break;
-                    case 'C':
-                        ++c;
-                        break;
-                    case 'G':
-                        ++g;
-                        break;
-                    case 'T':
-                        ++t;
-                        break;
-                }
-            }
-        }
-
-        private Aim getAim(int n) {
-            int avg = n / 4;
-            if (a == avg && c == avg && g == avg && t == avg) {
-                return null;
-            }
-            Aim aim = new Aim();
-            aim.ab = aim.a = a > avg ? a - avg : -1;
-            aim.cb = aim.c = c > avg ? c - avg : -1;
-            aim.gb = aim.g = g > avg ? g - avg : -1;
-            aim.tb = aim.t = t > avg ? t - avg : -1;
-            return aim;
-        }
+        return true;
     }
 
 }
