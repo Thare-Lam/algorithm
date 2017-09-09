@@ -1,4 +1,4 @@
-package company.meituan._20180831._02;
+package company.meituan._20170831._02;
 
 import java.util.Scanner;
 
