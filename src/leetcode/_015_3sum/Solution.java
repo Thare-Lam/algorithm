@@ -39,12 +39,4 @@ public class Solution {
         return result;
     }
 
-    private boolean listEquals(List<List<Integer>> lists, int a, int b, int c) {
-        if (lists.isEmpty()) {
-            return false;
-        }
-        List<Integer> list = lists.get(lists.size() - 1);
-        return list.get(0) == a && list.get(1) == b && list.get(2) == c;
-    }
-
 }
