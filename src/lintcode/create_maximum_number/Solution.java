@@ -52,9 +52,10 @@ public class Solution {
                         res[index++] = nums2[s2++];
                         e2 = Math.max(e2, s2);
                     } else {
-                        last1 = s1;
-                        res[index++] = nums1[s1++];
-                        if (index < k) {
+                        if (len1 - s1 >= len2 - s2) {
+                            last1 = s1;
+                            res[index++] = nums1[s1++];
+                        } else {
                             last2 = s2;
                             res[index++] = nums2[s2++];
                         }
