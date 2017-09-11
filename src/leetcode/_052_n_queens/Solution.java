@@ -1,20 +1,20 @@
-package leetcode._051_n_queens;
+package leetcode._052_n_queens;
 
 import java.util.*;
 
 public class Solution {
 
-    private List<List<String>> res = new ArrayList<>();
+    private int n;
+
+    private int count;
 
     private List<Integer> list;
 
-    private int n;
-
-    public List<List<String>> solveNQueens(int n) {
+    public int totalNQueens(int n) {
         this.n = n;
         list = new ArrayList<>(n);
         process(0);
-        return res;
+        return count;
     }
 
     private void process(int k) {
@@ -24,7 +24,7 @@ public class Solution {
             }
             list.add(i);
             if (k == n - 1) {
-                addRes();
+                ++count;
                 list.remove(k);
                 break;
             } else {
@@ -43,18 +43,6 @@ public class Solution {
             }
         }
         return true;
-    }
-
-    private void addRes() {
-        char[] c;
-        List<String> sl = new ArrayList<>(n);
-        for (int i = 0; i < n; ++i) {
-            c = new char[n];
-            Arrays.fill(c, '.');
-            c[list.get(i)] = 'Q';
-            sl.add(String.valueOf(c));
-        }
-        res.add(sl);
     }
 
 }
