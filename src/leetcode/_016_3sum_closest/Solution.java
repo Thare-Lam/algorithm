@@ -1,4 +1,4 @@
-package leetcode._16_3sum_closest;
+package leetcode._016_3sum_closest;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package leetcode._53_maximum_subarray;
+package leetcode._053_maximum_subarray;
 
 public class Solution {
 
