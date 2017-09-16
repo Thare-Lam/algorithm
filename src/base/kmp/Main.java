@@ -5,16 +5,18 @@ import utils.TestUtils;
 public class Main {
 
     public static int kmp(String a, String b) {
-        char[] ca = a.toCharArray();
-        char[] cb = b.toCharArray();
-        int lenB = cb.length;
-        int[] next = calNext(cb);
+        return kmp(a.toCharArray(), b.toCharArray());
+    }
+
+    public static int kmp(char[] a, char[] b) {
+        int lenB = b.length;
+        int[] next = calNext(b);
         int k = -1;
-        for (int i = 0; i < ca.length; ++i) {
-            while (k > -1 && cb[k + 1] != ca[i]) {
+        for (int i = 0; i < a.length; ++i) {
+            while (k > -1 && b[k + 1] != a[i]) {
                 k = next[k];
             }
-            if (cb[k + 1] == ca[i]) {
+            if (b[k + 1] == a[i]) {
                 ++k;
             }
             if (k == lenB - 1) {
