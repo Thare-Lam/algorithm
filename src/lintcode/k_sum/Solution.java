@@ -18,9 +18,6 @@ public class Solution {
         for (i = 0; i <= n; ++i) {
             dp[0][i][0] = 1;
         }
-        if (A[0] <= target) {
-            dp[1][1][A[0]] = 1;
-        }
         for (x = 1; x <= k; ++x) {
             for (i = 1; i <= n; ++i) {
                 for (j = 1; j <= target; ++j) {
