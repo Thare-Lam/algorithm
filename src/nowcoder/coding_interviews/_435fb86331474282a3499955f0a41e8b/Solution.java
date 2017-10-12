@@ -1,20 +1,10 @@
 package nowcoder.coding_interviews._435fb86331474282a3499955f0a41e8b;
 
+import nowcoder.coding_interviews.helper.TreeNode;
 import java.util.*;
 
-class TreeNode {
-    int val = 0;
-    TreeNode left = null;
-    TreeNode right = null;
-
-    public TreeNode(int val) {
-        this.val = val;
-
-    }
-
-}
-
 public class Solution {
+
     public int TreeDepth(TreeNode root) {
         Queue<TreeNode> queue = new LinkedList<>();
         TreeNode last = null;
@@ -43,4 +33,5 @@ public class Solution {
         }
         return height;
     }
+
 }
