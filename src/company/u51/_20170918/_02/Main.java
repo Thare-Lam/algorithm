@@ -39,7 +39,7 @@ public class Main {
             String str;
             while (count < 200000) {
                 str = readLine();
-                if (!str.equals("")) {
+                if (!"".equals(str)) {
                     process(str);
                 }
             }

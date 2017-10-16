@@ -30,7 +30,7 @@ public class Main {
     }
 
     private static int[] mult(int[] a, int[] b) {
-        int res[] = new int[a.length + b.length];
+        int[] res = new int[a.length + b.length];
         for (int i = a.length - 1; i >= 0; --i) {
             for (int j = b.length - 1; j >= 0; --j) {
                 res[i + j + 1] += a[i] * b[j];

@@ -35,11 +35,11 @@ public class Main {
         for (String[] r : req) {
             int curTime = Integer.valueOf(r[0]);
             String reqName = r[1];
-            if (reqName.equals("add")) {
+            if ("add".equals(reqName)) {
                 System.out.println(addActivity(Integer.valueOf(r[2]), Integer.valueOf(r[3]), Integer.valueOf(r[4]), Integer.valueOf(r[5])));
-            } else if (reqName.equals("buy")) {
+            } else if ("buy".equals(reqName)) {
                 System.out.println(buyGoods(curTime, Integer.valueOf(r[2]), Integer.valueOf(r[3])));
-            } else if (reqName.equals("list")) {
+            } else if ("list".equals(reqName)) {
                 getActivityList(curTime);
             }
         }
