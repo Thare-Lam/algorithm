@@ -17,3 +17,6 @@ My algorithm road
 * LintCode: http://www.lintcode.com/zh-cn/problem/#code#
 * NowCoder: https://www.nowcoder.com/practice/#code#
 * Pat: https://www.patest.cn/contests/pat-#type#-practise/#code#
+
+Replcae #code# with the package name. If the package name contains '_', replace it with '-'.  
+For example, a class's package is "leetcode._134_gas_station", it's detail web page addr is "https://leetcode.com/problems/gas-station".
