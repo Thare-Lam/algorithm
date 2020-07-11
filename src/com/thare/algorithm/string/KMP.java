@@ -5,15 +5,15 @@ public class KMP {
     public static void main(String[] args) {
         String s = "dsgsdgweqgtewhgertwewet";
         String t = "eqgte";
-        System.out.println(new KMP().kmp(s, t));
+        System.out.println(kmp(s, t));
         System.out.println(s.indexOf(t));
-//        int[] r = getNext("ABABAA");
-//        for (int i: r) {
-//            System.out.println(i);
-//        }
+        int[] r = getNext("ABABAA");
+        for (int i: r) {
+            System.out.println(i);
+        }
     }
 
-    public int kmp(String s, String t) {
+    public static int kmp(String s, String t) {
         int[] next = getNext(t);
         for (int i = 0, j = 0, sLen = s.length(), tLen = t.length(); i < sLen; ++i) {
             while (j > 0 && s.charAt(i) != t.charAt(j)) {
@@ -29,7 +29,7 @@ public class KMP {
         return -1;
     }
 
-    private int[] getNext(String t) {
+    private static int[] getNext(String t) {
         int len = t.length();
         int[] next = new int[len];
         for (int i = 1, k = 0; i < len; ++i) {
@@ -44,7 +44,7 @@ public class KMP {
         return next;
     }
 
-    public int kmp2(String s, String t) {
+    public static int kmp2(String s, String t) {
         int[] next = getNext(t);
         int i = 0, j = 0, sLen = s.length(), tLen = t.length();
         while (i < sLen && j < tLen) {
@@ -58,7 +58,7 @@ public class KMP {
         return j == tLen ? i - tLen : -1;
     }
 
-    private int[] getNext2(String t) {
+    private static int[] getNext2(String t) {
         int len = t.length(), i, j, l, r;
         int[] next = new int[len];
         boolean flag;

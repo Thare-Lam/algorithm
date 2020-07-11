@@ -3,13 +3,13 @@ package com.thare.algorithm.search;
 public class BinarySearch {
 
     public static void main(String[] args) {
-        System.out.println(search(TestUtil.INT_ARRAY_SORTED, 0));
+        System.out.println(search(TestUtil.INT_ARRAY_SORTED, 10));
     }
 
     public static int search(int[] array, int value) {
         int l = 0, r = array.length, m;
         while (l < r) {
-            m = l + ((r - l) >> 2);
+            m = l + ((r - l) >> 1);
             if (array[m] >= value) {
                 r = m;
             } else {

@@ -8,15 +8,13 @@ public class SelectSort {
     }
 
     public static void sort(int[] array) {
-        int x, temp;
+        int x;
         for (int i = array.length - 1; i > 0; --i) {
             x = 0;
             for (int j = 1; j <= i; ++j) {
                 x = array[x] < array[j] ? j : x;
             }
-            temp = array[x];
-            array[x] = array[i];
-            array[i] = temp;
+            Utils.swap(array, x, i);
         }
     }
 

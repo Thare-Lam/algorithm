@@ -8,16 +8,13 @@ public class BubbleSort {
     }
 
     public static void sort(int[] array) {
-        boolean noSwap = false;
-        int temp;
-        for (int i = array.length - 1; i > 0 && !noSwap; --i) {
-            noSwap = true;
+        boolean swap = true;
+        for (int i = array.length - 1; i > 0 && swap; --i) {
+            swap = false;
             for (int j = 0; j < i; ++j) {
                 if (array[j] > array[j + 1]) {
-                    temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                    noSwap = false;
+                    Utils.swap(array, j, j + 1);
+                    swap = true;
                 }
             }
         }

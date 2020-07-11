@@ -25,10 +25,10 @@ public class QuickSort {
         int k = start - 1;
         for (int i = start; i < end; ++i) {
             if (array[i] < array[end]) {
-                swap(array, ++k, i);
+                Utils.swap(array, ++k, i);
             }
         }
-        swap(array, ++k, end);
+        Utils.swap(array, ++k, end);
         return k;
     }
 
@@ -51,12 +51,6 @@ public class QuickSort {
         }
         array[i] = pValue;
         return i;
-    }
-
-    private static void swap(int[] array, int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
     }
 
 }
