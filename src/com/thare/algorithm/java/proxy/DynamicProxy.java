@@ -12,25 +12,25 @@ public class DynamicProxy {
         car.drive();
     }
 
-}
+    static class ProxyHandler implements InvocationHandler {
 
-class ProxyHandler implements InvocationHandler {
+        Object target;
 
-    Object target;
+        public Object bind(Object target) {
+            this.target = target;
+            return Proxy.newProxyInstance(target.getClass().getClassLoader(),
+                    target.getClass().getInterfaces(), this);
+        }
 
-    public Object bind(Object target) {
-        this.target = target;
-        return Proxy.newProxyInstance(target.getClass().getClassLoader(),
-                target.getClass().getInterfaces(), this);
-    }
+        @Override
+        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+            Object result;
+            System.out.println("fill gas");
+            result = method.invoke(target, args);
+            System.out.println("stop");
+            return result;
+        }
 
-    @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        Object result;
-        System.out.println("fill gas");
-        result = method.invoke(target, args);
-        System.out.println("stop");
-        return result;
     }
 
 }
